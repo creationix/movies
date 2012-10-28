@@ -1,0 +1,77 @@
+.movie {
+  display: inline-block;
+  position: relative;
+  width: 640px;
+  height: 360px;
+}
+.movie img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+body {
+  float: left;
+  color: #fff;
+  font-family: sans-serif;
+  font-weight: bold;
+  background-color: #444;
+}
+
+@keyframes crossfade1 {
+  0% { opacity: 0; }
+  7% { opacity: 1; }
+  33% { opacity: 1; }
+  40% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@-webkit-keyframes crossfade1 {
+  0% { opacity: 0; }
+  7% { opacity: 1; }
+  33% { opacity: 1; }
+  40% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes crossfade2 {
+  0% { opacity: 0; }
+  33% { opacity: 0; }
+  40% { opacity: 1; }
+  66% { opacity: 1; }
+  73% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@-webkit-keyframes crossfade2 {
+  0% { opacity: 0; }
+  33% { opacity: 0; }
+  40% { opacity: 1; }
+  66% { opacity: 1; }
+  73% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes crossfade3 {
+  0% { opacity: 1; }
+  7% { opacity: 0; }
+  66% { opacity: 0; }
+  73% { opacity: 1; }
+  100% { opacity: 1; }
+}
+@-webkit-keyframes crossfade3 {
+  0% { opacity: 1; }
+  7% { opacity: 0; }
+  66% { opacity: 0; }
+  73% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.crossfade1 {
+  animation: crossfade1 9s linear infinite 0s;
+  -webkit-animation: crossfade1 9s linear infinite 0s;
+}
+.crossfade2 {
+  animation: crossfade2 9s linear infinite 0s;
+  -webkit-animation: crossfade2 9s linear infinite 0s;
+}
+.crossfade3 {
+  animation: crossfade3 9s linear infinite 0s;
+  -webkit-animation: crossfade3 9s linear infinite 0s;
+}
+

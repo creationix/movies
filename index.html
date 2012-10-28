@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <title>Caswell Movies</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <h1>Caswell Movies</h1>
+  <div class="movies">
+{#movies()}
+    <a class="movie" href="{href}" title="{name}">
+      <img class="crossfade1" src="{src30}"/>
+      <img class="crossfade2" src="{src90}"/>
+      <img class="crossfade3" src="{src180}"/>
+    </a>
+{/movies}
+  </div>
+</body>
+</html>
