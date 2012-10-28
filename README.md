@@ -12,6 +12,10 @@ Then run the `makethumbs.sh` script to create thumbnails of each video at 30, 90
 
 This is s node program, so install node and grab the deps using `npm install`.
 
+## Setting up DDNS
+
+In server.js there is a script to setup ddns through the linode api.  Read the comment in there and create the linode-config.js file it needs.  If you don't want ddns, comment out or remove that part.
+
 ## Running
 
 Either run the app using `node server.js`.  Or if this is on a permament home server, create an upstart script or something.  My script is included for reference.

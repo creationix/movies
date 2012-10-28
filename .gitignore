@@ -2,3 +2,4 @@ videos
 *.log
 node_modules
 thumbs
+linode-config.js

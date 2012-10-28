@@ -68,3 +68,53 @@ function movies(_, block, callback) {
     }
   });
 }
+
+// contains:
+// key: your linode key
+// domain: the domain to modify
+// resource: the resource to modify
+// ipUrl: url to http server that responds with our wan address
+var config = require('./linode-config');
+
+var client = new(require('linode-api').LinodeClient)(config.key);
+client.call('domain.list', {}, function (err, res) {
+  if (err) throw err;
+  for (var i = 0, l = res.length; i < l; i++) {
+    if (res[i].DOMAIN === config.domain) {
+      config.domainID = res[i].DOMAINID;
+      break;
+    }
+  }
+  client.call("domain.resource.list", {DomainID: config.domainID}, function (err, res) {
+    if (err) throw err;
+    var resourceID;
+    for (var i = 0, l = res.length; i < l; i++) {
+      if (res[i].NAME === config.resource) {
+        config.resourceID = res[i].RESOURCEID;
+        break;
+      }
+    }
+    check();
+    setInterval(check, 60000);
+  });
+});
+
+var request = require('superagent');
+
+function check() {
+  console.log("check", config);
+  request(config.ipUrl, function (res) {
+    if (!res.ok) throw new Error(res.status + ": " + res.text);
+    if (config.ip === res.text) return;
+    config.ip = res.text;
+    client.call("domain.resource.update", {
+      DomainID: config.domainID,
+      ResourceID: config.resourceID,
+      Target: config.ip,
+      TTL_sec: 300
+    }, function (err, res) {
+      console.log("Updated %s.%s to %s", config.resource, config.domain, config.ip);
+      if (err) throw err; 
+    });
+  });
+}
