@@ -11,6 +11,8 @@
   "author": "Tim Caswell",
   "license": "MIT",
   "dependencies": {
-    "kernel": "~0.1.4"
+    "kernel": "~0.1.4",
+    "stack": "~0.1.0",
+    "creationix": "~0.3.1"
   }
 }
