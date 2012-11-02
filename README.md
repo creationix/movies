@@ -4,7 +4,7 @@ This server streams movies over http.  Any mobile device or modern browser can p
 
 ## Adding Content
 
-Convert your videos using handbrake on the iPad setting (the css is optimized for this resolution).  Put the m4v files in a folder called "videos".
+Convert your videos using handbrake on the iPad setting (the css is optimized for this resolution).  Put the m4v files in a folder called "incoming" and create an empty folder called "videos".
 
 Then run the `makethumbs.sh` script to create thumbnails of each video at 30, 90, and 180 seconds.
 

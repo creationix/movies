@@ -22,7 +22,7 @@ var handler = Stack(
   }
 );
 var isRoot = !process.getuid();
-var PORT = isRoot ? 80 : 8080;
+var PORT = process.env.PORT || (isRoot ? 80 : 8080);
 Http.createServer(handler).listen(PORT, function () {
   console.log("Serving %s at http://localhost:%s/", __dirname, PORT);
 });
@@ -113,8 +113,14 @@ function check() {
       Target: config.ip,
       TTL_sec: 300
     }, function (err, res) {
-      console.log("Updated %s.%s to %s", config.resource, config.domain, config.ip);
       if (err) throw err; 
+      console.log("Updated %s.%s to %s", config.resource, config.domain, config.ip);
+
+
+      
+
+  
     });
   });
 }
+
